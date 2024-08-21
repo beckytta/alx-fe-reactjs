@@ -3,7 +3,20 @@ import create from 'zustand';
 const useRecipeStore = create(set => ({
   recipes: [],
   favorites: [],
-  
+  searchTerm: '',
+  filteredRecipes: [],
+
+  setSearchTerm: (term)=> set(state => {
+    const filtered = state.recipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(term.toLowerCase())
+    );
+    return{searchTerm: term, filteredRecipes: filtered};
+  }),
+    setRecipes: (recipes)=> set(state => ({
+      recipes: recipes,
+      filteredRecipes: recipes
+    })),
+
   // Action to add a recipe to favorites
   addFavorite: (recipeId) => set(state => ({
     favorites: [...state.favorites, recipeId]
