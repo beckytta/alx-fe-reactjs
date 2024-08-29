@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import BlogPost from './components/BlogPost';
 
 const isAuthenticated = false;
 <Route
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/*" element={<Profile />} />
-        <Route path="/posts/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} />{/*Dynamic Route */}
 
       </Routes>
     </Router>
