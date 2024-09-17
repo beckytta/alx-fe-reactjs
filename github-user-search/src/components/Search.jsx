@@ -1,6 +1,5 @@
-// src/components/Search.jsx
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService';
+import { fetchAdvancedUserData } from '../services/githubService'; // Adjust import based on your actual function
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -10,26 +9,29 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Handle input change for all fields
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'username') setUsername(value);
-    if (name === 'location') setLocation(value);
-    if (name === 'minRepos') setMinRepos(value);
+    const { name, value } = e.target; // Extract name and value from event target
+    if (name === 'username') setUsername(value); // Update username state
+    if (name === 'location') setLocation(value); // Update location state
+    if (name === 'minRepos') setMinRepos(value); // Update minRepos state
   };
 
+  // Handle form submission
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+    e.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Set loading state to true
+    setError(null); // Clear any previous error
 
     try {
+      // Fetch advanced user data based on the input criteria
       const data = await fetchAdvancedUserData(username, location, minRepos);
       setUserData(data.items); // GitHub Search API returns results under 'items'
     } catch (err) {
-      setError("Looks like we cant find any users matching your criteria");
-      setUserData([]);
+      setError("Looks like we can't find any users matching your criteria"); // Set error message
+      setUserData([]); // Clear user data on error
     } finally {
-      setLoading(false);
+      setLoading(false); // Set loading state to false
     }
   };
 
@@ -92,5 +94,3 @@ const Search = () => {
 };
 
 export default Search;
-
-
