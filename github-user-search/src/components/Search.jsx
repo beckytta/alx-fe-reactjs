@@ -11,10 +11,7 @@ const Search = () => {
 
   // Handle input change for all fields
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // Extract name and value from event target
-    if (name === 'username') setUsername(value); // Update username state
-    if (name === 'location') setLocation(value); // Update location state
-    if (name === 'minRepos') setMinRepos(value); // Update minRepos state
+    setUsername (e.target.value);
   };
 
   // Handle form submission
