@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const GITHUB_SEARCH_API_URL = "https://api.github.com/search/users?q";
 
-export const fetchAdvancedUserData = async (username, location, minRepos) => {
+export const fetchUserData = async (username, location, minRepos) => {
   const query = [
     username && `user:${username}`,
     location && `location:${location}`,
