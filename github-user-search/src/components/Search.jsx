@@ -28,7 +28,7 @@ const Search = () => {
       const data = await fetchAdvancedUserData(username, location, minRepos);
       setUserData(data.items); // GitHub Search API returns results under 'items'
     } catch (err) {
-      setError("Looks like we can't find any users matching your criteria"); // Set error message
+      setError("Looks like we cant find the user "); // Set error message
       setUserData([]); // Clear user data on error
     } finally {
       setLoading(false); // Set loading state to false
