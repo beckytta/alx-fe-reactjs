@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Search from './components/Search';
 import Home from './components/Home';
 
 const App = () => {
