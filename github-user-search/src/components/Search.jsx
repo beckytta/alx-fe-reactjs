@@ -20,8 +20,12 @@ const Search = () => {
     try {
       const data = await fetchUserData(username);
       setUserData(data);
+      if (!data.login) {
+        throw new Error('User not found');
+      }
     } catch (err) {
-      setError('Looks like we can’t find the user');
+      setError("Looks like we can't find the user");
+      setUserData(null);
     } finally {
       setLoading(false);
     }
@@ -45,6 +49,7 @@ const Search = () => {
         <div>
           <img src={userData.avatar_url} alt="User Avatar" width="100" />
           <h3>{userData.name}</h3>
+          <p>Username: {userData.login}</p>
           <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
             View GitHub Profile
           </a>
@@ -55,3 +60,4 @@ const Search = () => {
 };
 
 export default Search;
+
