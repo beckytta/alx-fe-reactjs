@@ -20,9 +20,6 @@ const Search = () => {
     try {
       const data = await fetchUserData(username);
       setUserData(data);
-      if (!data.login) {
-        throw new Error('User not found');
-      }
     } catch (err) {
       setError("Looks like we can't find the user");
       setUserData(null);
